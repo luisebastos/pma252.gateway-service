@@ -1,5 +1,8 @@
 package store.gateway;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
@@ -12,11 +15,18 @@ public class GatewayResource {
 
     @GetMapping("/health-check")
     public ResponseEntity<Map<String, String>> healthCheck() {
+        String ip = "";
+        try {
+            ip = InetAddress.getLocalHost().getHostAddress();
+        } catch (Exception e) {
+            ip = e.getMessage();
+        }
         return ResponseEntity.ok()
             .body(Map.of(
                 "osArch", System.getProperty("os.arch"),
                 "osName", System.getProperty("os.name"),
-                "osVersision", System.getProperty("os.version")
+                "osVersision", System.getProperty("os.version"),
+                "ip", ip
             ));
     }
 
