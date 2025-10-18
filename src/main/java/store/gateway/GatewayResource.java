@@ -26,7 +26,7 @@ public class GatewayResource {
                 "osArch", System.getProperty("os.arch"),
                 "osName", System.getProperty("os.name"),
                 "osVersision", System.getProperty("os.version"),
-                "ip", ip
+                "hostAddress", ip
             ));
     }
 
