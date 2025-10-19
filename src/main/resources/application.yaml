@@ -25,6 +25,11 @@ spring:
               predicates:
                 - Path=/account/**
 
+            - id: product
+              uri: http://product:8080
+              predicates:
+                - Path=/product/**
+
             - id: auth
               uri: http://auth:8080
               predicates:
